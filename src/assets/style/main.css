@@ -1,0 +1,18 @@
+@import url('./reset.css');
+@import url('//at.alicdn.com/t/font_1186631_dnfzsu5n7yp.css');
+
+html,
+body {
+  height: 100%;
+}
+
+.qs-icon {
+  font-size: 14px;
+  margin-right: 5px;
+  line-height: 1;
+  font-variant: normal;
+  vertical-align: baseline;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
