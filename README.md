@@ -1,4 +1,4 @@
-# survey_system_vue
+# qs_vue_template
 
 ## Project setup
 ```
