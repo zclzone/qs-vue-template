@@ -30,7 +30,7 @@ export default {
     bottom: 0;
     left: 0;
     right: 0;
-    background: transparent;
+    background-color: rgba(0, 0, 0, 0.1);
   }
   .loading-content {
     position: fixed;
