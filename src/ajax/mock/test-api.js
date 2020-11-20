@@ -1,4 +1,4 @@
-const msg = "Hello QS Vue Template!"
+const msg = "Hello, QS Vue Template!"
 export default [
   {
     url: '/test',
