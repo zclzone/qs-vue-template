@@ -17,5 +17,9 @@ module.exports = {
         maxAssetSize: 30000000
       }
     }
-  }
+  },
+  //devServer: {
+  //使用代理解决前端应用和后端 API 跨域问题
+  // proxy: 'http://localhost:3000/api'
+  //}
 }
