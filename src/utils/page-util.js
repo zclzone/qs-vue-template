@@ -1,4 +1,5 @@
-const title = 'qs vue template'
+import settings from '@/settings'
+const title = settings.title || 'QS Template Vue'
 
 export function setPageTitle(pageTitle) {
   if (pageTitle) {

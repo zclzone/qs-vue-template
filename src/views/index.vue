@@ -14,11 +14,22 @@ export default {
     }
   },
   mounted() {
-    this.$loading.show()
-    this.$axios.get('/test').then((rst) => {
-      this.$loading.hide()
-      this.msg = rst.data
-    })
+    this.initData()
+  },
+  methods: {
+    async initData() {
+      setInterval(() => {
+        this.curDate = new Date()
+      }, 1000)
+      try {
+        this.$loading.show()
+        const res = await this.$axios.get('/test')
+        this.$loading.hide()
+        this.msg = res.data
+      } catch (error) {
+        console.error(error)
+      }
+    },
   },
 }
 </script>

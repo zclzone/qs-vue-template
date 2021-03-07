@@ -7,7 +7,7 @@ const instance = new LoadingConstructor({
   el: document.createElement('div')
 })
 
-instance.show = false // 默认隐藏
+instance.show = true // 默认隐藏
 const loading = {
   show() { // 显示方法
     instance.show = true

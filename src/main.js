@@ -3,6 +3,17 @@ import App from './App.vue'
 import router from '@/router'
 // import store from './store'
 
+// 引入Element UI
+import Element from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+import 'element-ui/lib/theme-chalk/display.css'
+Vue.use(Element)
+
+// 引入mavonEditor
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
+Vue.use(mavonEditor)
+
 //全局引用loding组件
 import loading from '@/utils/loading'
 Vue.use(loading)
