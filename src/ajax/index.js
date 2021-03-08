@@ -2,9 +2,7 @@ import axios from 'axios'
 
 const service = axios.create({
   timeout: 30000,
-  // baseURL: '/api',
-  // baseURL: 'http://blog.qszone.com/api',
-  baseURL: 'http://sally.qszone.com/api',
+  baseURL: '/api',
   withCredentials: false,
 })
 
