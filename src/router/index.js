@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import { setPageTitle } from '@/utils/page-util'
+import { setPageTitle } from '@/utils/page'
 
 
 Vue.use(VueRouter)
@@ -9,55 +9,16 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    hidden: true,
     redirect: '/index',
   },
   {
     path: '/index',
     component: () => import('@/views/index'),
-    hidden: true,
     meta: {
       title: '首页',
       keepAlive: true
     }
-  },
-  {
-    path: '/admin',
-    component: _ => import('@/layout/admin'),
-    redirect: '/admin/list',
-    meta: {
-      title: '博客管理'
-    },
-    children: [
-      {
-        path: 'list',
-        component: _ => import('@/views/admin/post-list'),
-        meta: {
-          title: '文章列表'
-        }
-      },
-      {
-        path: 'list/:action',
-        component: _ => import('@/views/admin/post-list/detail'),
-        hidden: true,
-        meta: {
-          title: '文章详情'
-        }
-      },
-      {
-        path: 'category',
-        component: _ => import('@/views/admin/category'),
-        meta: {
-          title: '文章分类'
-        }
-      }
-    ]
-  },
-  {
-    path: '/redirect',
-    hidden: true,
-    component: _ => import('@/components/redirect'),
-  },
+  }
 ]
 
 const router = new VueRouter({

@@ -1,5 +1,5 @@
 <template>
-  <div class="view">
+  <div class="view" v-show="msg">
     <h1 v-text="msg"></h1>
     <p>{{curDate | dateFormat}}</p>
   </div>
@@ -25,7 +25,7 @@ export default {
         this.$loading.show()
         const res = await this.$axios.get('/test')
         this.$loading.hide()
-        this.msg = res.data
+        this.msg = res.data.msg
       } catch (error) {
         console.error(error)
       }
@@ -49,8 +49,9 @@ export default {
     text-fill-color: transparent;
   }
   p {
-    font-size: 16px;
-    color: #bbb;
+    font-size: 18px;
+    line-height: 35px;
+    color: #aaa;
   }
 }
 </style>

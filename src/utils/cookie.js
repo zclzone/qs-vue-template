@@ -12,13 +12,4 @@ export function setToken(token) {
 
 export function removeToken() {
   Cookies.remove(TOKEN_CODE)
-  Cookies.remove('User')
-}
-
-export function getUser() {
-  return Cookies.get('User')
-}
-
-export function setUser(userInfo) {
-  return Cookies.set('User', userInfo)
 }

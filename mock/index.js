@@ -1,5 +1,4 @@
 import Mock from 'mockjs'
-
 import testApi from './test-api'
 
 const mocks = [

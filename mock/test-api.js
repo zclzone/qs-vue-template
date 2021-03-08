@@ -5,8 +5,7 @@ export default [
     type: 'get',
     response: config => {
       return {
-        status: "OK",
-        data: msg
+        msg
       }
     }
   },

@@ -20,7 +20,7 @@ service.interceptors.request.use(
 )
 
 service.interceptors.response.use(
-  response => response.data,
+  response => Promise.resolve(response),
   err => Promise.reject(err)
 )
 
