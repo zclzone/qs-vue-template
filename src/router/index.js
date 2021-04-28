@@ -18,6 +18,20 @@ const routes = [
       title: '首页',
       keepAlive: true
     }
+  },
+  {
+    path: '/admin',
+    component: () => import('@/layout/admin'),
+    meta: {
+      title: 'Admin',
+      keepAlive: true
+    },
+    children: [
+      {
+        path: '',
+        component: () => import('@/components/helloworld')
+      }
+    ]
   }
 ]
 

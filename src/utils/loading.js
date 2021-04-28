@@ -20,13 +20,9 @@ const loading = {
 
 export default {
   install() {
-    if (!Vue.$loading) {
-      Vue.$loading = loading
+    // 将loading添加到全局
+    if (!window.$loading) {
+      window.$loading = loading
     }
-    Vue.mixin({
-      created() {
-        this.$loading = Vue.$loading
-      }
-    })
   }
 }
