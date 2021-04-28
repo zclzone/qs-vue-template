@@ -3,11 +3,14 @@ import App from './App.vue'
 import router from '@/router'
 // import store from './store'
 
+// 引用基础公用样式
+import '@/assets/style/main.css'
+
 //全局引用loding组件
 import loading from '@/utils/loading'
 Vue.use(loading)
 
-import '@/assets/style/main.css'
+
 
 //mock 通过环境变量来判断是否需要加载启用
 if (process.env.NODE_ENV === 'development') {
@@ -16,10 +19,12 @@ if (process.env.NODE_ENV === 'development') {
 
 //扩充Vue的全局prototype属性
 import axios from '@/ajax'
-import { to, guid } from '@/utils/common'
 Vue.prototype.$axios = axios
-Vue.prototype.$to = to
-Vue.prototype.$guid = guid
+
+import * as commons from '@/utils/common'
+Object.keys(commons).forEach(key => {
+  Vue.prototype['$' + key] = commons[key]
+})
 
 //全局过滤器
 import * as filters from './filters'

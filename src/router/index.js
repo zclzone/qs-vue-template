@@ -29,7 +29,11 @@ const routes = [
     children: [
       {
         path: '',
-        component: () => import('@/components/helloworld')
+        component: () => import('@/components/helloworld'),
+        meta: {
+          title: 'Admin',
+          keepAlive: true
+        },
       }
     ]
   }

@@ -10,6 +10,5 @@ const guid = () => {
 }
 
 export {
-  to,
-  guid,
+  to, guid
 }

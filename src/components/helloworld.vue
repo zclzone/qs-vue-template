@@ -44,16 +44,47 @@ export default {
   flex-direction: column;
   text-align: center;
   h1 {
-    background: linear-gradient(to right, red, blue);
-    -webkit-background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-    text-fill-color: transparent;
+    color: #bf7497;
   }
   p {
     font-size: 18px;
+    color: #888;
     line-height: 35px;
-    color: #aaa;
+  }
+}
+@media all and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+  .content {
+    background-image: -webkit-linear-gradient(
+      left bottom,
+      #888,
+      #bf7497 25%,
+      #888 50%,
+      #bf7497 75%,
+      #888
+    );
+    animation: masked-animation 4s infinite linear;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-size: 200% 100%;
+    -webkit-background-size: 200% 100%;
+    -webkit-animation: masked-animation 4s infinite linear;
+  }
+}
+@keyframes masked-animation {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+@-webkit-keyframes masked-animation {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -100% 0;
   }
 }
 </style>
