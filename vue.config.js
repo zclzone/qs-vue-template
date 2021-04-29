@@ -1,20 +1,11 @@
 const { title } = require('./src/settings.js')
+const port = process.env.PORT || 3000
 
-const port = process.env.port || 3000
 module.exports = {
   publicPath: '/',
   outputDir: 'dist',
   assetsDir: 'static',
   productionSourceMap: false,
-  // pages: {
-  //   index: {
-  //     entry: 'src/main.js',
-  //     title,
-  //   }
-  // },
-  // configureWebpack: {
-  //   name: title
-  // },
   chainWebpack: config => {
     config.plugin('html').tap(args => {
       // 修改初始title
@@ -23,7 +14,9 @@ module.exports = {
     })
   },
   devServer: {
-    open: true, // 启动完自动打开
+    port, // 端口号
+    open: true, // 自动打开浏览器
+    // 让浏览器显示警告和错误，false：不显示  true：显示
     overlay: {
       warnings: false,
       errors: true
@@ -46,4 +39,10 @@ module.exports = {
     },
     // after: require('./mock')
   },
+  // pages: {
+  //   index: {
+  //     entry: 'src/main.js',
+  //     title,
+  //   }
+  // },
 }

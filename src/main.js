@@ -4,7 +4,7 @@ import router from '@/router'
 // import store from './store'
 
 // 引用基础公用样式
-import '@/assets/style/main.css'
+import '@/assets/style/main.scss'
 
 //全局引用loding组件
 import loading from '@/utils/loading'
