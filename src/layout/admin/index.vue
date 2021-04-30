@@ -1,136 +1,52 @@
 <template>
-  <div class="page">
-    <header tabindex="0">头部</header>
-    <div id="nav-container">
-      <div class="bg"></div>
-      <div class="button" tabindex="0">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </div>
-      <div id="nav-content" tabindex="0">
-        <ul>
-          <li><a href="#0">Home</a></li>
-          <li><a href="#0">Blog</a></li>
-          <li><a href="#0">About</a></li>
-          <li><a href="#0">Contact</a></li>
-          <li class="last"><a href="#0">Wechat</a><a href="#0">Github</a></li>
-        </ul>
-      </div>
-    </div>
+  <div class="page" :class="{ 'menu-active': isMenuActive }">
+    <nav id="slide-menu">
+      <ul>
+        <li>
+          <a href="#0">Home</a>
+        </li>
+        <li><a href="#0">Blog</a></li>
+        <li><a href="#0">About</a></li>
+        <li><a href="#0">Contact</a></li>
+        <li class="last"><a href="#0">Wechat</a><a href="#0">Github</a></li>
+      </ul>
+    </nav>
 
-    <main>
+    <main id="content">
+      <div id="menu-trigger" @click="isMenuActive = !isMenuActive"></div>
       <router-view />
     </main>
   </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      isMenuActive: false,
+    }
+  },
+}
+</script>
+
 <style lang="scss" scoped>
+@import '~@/assets/style/admin/index.css';
 .page {
-  width: 100%;
-  height: 100vh;
-  background: #fdfdfd;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  color: #212121;
-  header {
-    display: flex;
-    position: fixed;
-    width: 100%;
-    height: 70px;
-    background: #212121;
-    color: #fff;
-    justify-content: center;
-    align-items: center;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  }
+  display: flex;
+  height: 100%;
+  background-color: #556270;
 
-  #nav-container {
-    position: fixed;
-    height: 100vh;
-    width: 100%;
-    pointer-events: none;
-    * {
-      visibility: visible;
-    }
-    .bg {
-      position: absolute;
-      top: 70px;
-      left: 0;
-      width: 100%;
-      height: calc(100% - 70px);
-      visibility: hidden;
-      opacity: 0;
-      transition: 0.3s;
-      background: #000;
-    }
-    .button {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      z-index: 1;
-      -webkit-appearance: none;
-      border: 0;
-      background: transparent;
-      border-radius: 0;
-      height: 70px;
-      width: 30px;
-      cursor: pointer;
-      pointer-events: auto;
-      margin-left: 25px;
-      touch-action: manipulation;
-      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-      .icon-bar {
-        display: block;
-        width: 100%;
-        height: 3px;
-        background: #aaa;
-        transition: 0.3s;
-        & + .icon-bar {
-          margin-top: 5px;
-        }
-      }
-    }
-    &:focus-within {
-      .bg {
-        visibility: visible;
-        opacity: 0.6;
-      }
-      .button {
-        pointer-events: none;
-        .icon-bar:nth-of-type(1) {
-          transform: translate3d(0, 8px, 0) rotate(45deg);
-        }
-        .icon-bar:nth-of-type(2) {
-          opacity: 0;
-        }
-        .icon-bar:nth-of-type(3) {
-          transform: translate3d(0, -8px, 0) rotate(-45deg);
-        }
-      }
-      #nav-content {
-        transform: none;
-      }
-    }
-  }
+  #slide-menu {
+    width: 0;
+    min-width: 0;
+    height: 100%;
+    background: #556270;
+    opacity: 0;
 
-  #nav-content {
-    margin-top: 70px;
-    padding: 20px;
-    width: 90%;
-    max-width: 300px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: calc(100% - 70px);
-    background: #ececec;
-    pointer-events: auto;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    transform: translateX(-100%);
-    transition: transform 0.5s;
-    will-change: transform;
-    contain: paint;
+    -moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+
     ul {
       height: 100%;
       display: flex;
@@ -142,14 +58,13 @@
         display: none;
       }
       li {
+        display: flex;
+        align-self: center;
         &.last {
           margin-top: auto;
-          display: flex;
-          align-self: center;
           a {
             font-size: 12px;
             font-weight: 400;
-            color: #888;
             & + a {
               margin-left: 15px;
             }
@@ -160,6 +75,7 @@
           display: block;
           text-transform: uppercase;
           transition: color 0.1s;
+          color: #dfe5eb;
           &:hover {
             color: #bf7497;
           }
@@ -167,10 +83,67 @@
       }
     }
   }
+  #content {
+    flex: 1;
+    position: relative;
 
-  main {
-    padding: 70px 20px 0;
     height: 100%;
+    padding: 60px;
+    background-color: #fff;
+
+    -moz-transition: all 300ms;
+    -webkit-transition: all 300ms;
+    transition: all 300ms;
+
+    #menu-trigger {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 36px;
+      height: 36px;
+      background: #dfe5eb;
+      cursor: pointer;
+      border-radius: 5px;
+
+      -moz-transition: all 300ms;
+      -webkit-transition: all 300ms;
+      transition: all 300ms;
+
+      &:before {
+        content: '\e801';
+        display: inline-block;
+        width: 36px;
+        height: 36px;
+        color: black;
+        font-family: 'ico';
+        font-style: normal;
+        font-size: 1.2em;
+        font-weight: normal;
+        font-variant: normal;
+        text-align: center;
+        text-transform: none;
+        line-height: 36px;
+      }
+
+      &:hover {
+        background: #556270;
+        &:before {
+          color: #fcfeff;
+        }
+      }
+    }
+  }
+  &.menu-active {
+    #slide-menu {
+      width: auto;
+      min-width: 230px;
+      padding: 20px;
+      opacity: 1;
+    }
+    #content {
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }
   }
 }
 </style>
