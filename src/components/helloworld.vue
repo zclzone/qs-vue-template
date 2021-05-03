@@ -44,11 +44,11 @@ export default {
   flex-direction: column;
   text-align: center;
   h1 {
-    color: #bf7497;
+    color: #2e4c59;
   }
   p {
     font-size: 18px;
-    color: #888;
+    color: #86a59d;
     line-height: 35px;
   }
 }
@@ -56,11 +56,11 @@ export default {
   .content {
     background-image: -webkit-linear-gradient(
       left bottom,
-      #888,
-      #bf7497 25%,
-      #888 50%,
-      #bf7497 75%,
-      #888
+      #86a59d,
+      #2e4c59 25%,
+      #86a59d 50%,
+      #2e4c59 75%,
+      #86a59d
     );
     animation: masked-animation 4s infinite linear;
     -webkit-text-fill-color: transparent;

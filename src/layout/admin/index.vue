@@ -1,20 +1,30 @@
 <template>
-  <div class="page" :class="{ 'menu-active': isMenuActive }">
-    <nav id="slide-menu">
+  <div
+    class="page"
+    @click="isMenuActive = false"
+    :class="{ 'menu-active': isMenuActive }"
+  >
+    <nav id="slide-menu" @click.stop>
       <ul>
-        <li>
-          <a href="#0">Home</a>
+        <li><a href="http://www.qszone.com">Home</a></li>
+        <li><a href="http://blog.qszone.com">Blog</a></li>
+        <li><a href="http://blog.qszone.com">About</a></li>
+        <li><a href="http://me.qszone.com/">Contact</a></li>
+        <li class="last">
+          <a href="https://github.com/zclzone">Wechat</a
+          ><a href="https://github.com/zclzone">Github</a>
         </li>
-        <li><a href="#0">Blog</a></li>
-        <li><a href="#0">About</a></li>
-        <li><a href="#0">Contact</a></li>
-        <li class="last"><a href="#0">Wechat</a><a href="#0">Github</a></li>
       </ul>
     </nav>
 
     <main id="content">
-      <div id="menu-trigger" @click="isMenuActive = !isMenuActive"></div>
-      <router-view />
+      <div id="menu-trigger" @click.stop="isMenuActive = !isMenuActive">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <router-view></router-view>
     </main>
   </div>
 </template>
@@ -33,19 +43,20 @@ export default {
 @import '~@/assets/style/admin/index.css';
 .page {
   display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100%;
-  background-color: #556270;
-
+  background-color: #2e4c59;
   #slide-menu {
-    width: 0;
+    max-width: 0;
     min-width: 0;
     height: 100%;
-    background: #556270;
-    opacity: 0;
+    background: #2e4c59;
 
-    -moz-transition: all 0.3s;
-    -webkit-transition: all 0.3s;
-    transition: all 0.3s;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
 
     ul {
       height: 100%;
@@ -59,7 +70,7 @@ export default {
       }
       li {
         display: flex;
-        align-self: center;
+        justify-content: center;
         &.last {
           margin-top: auto;
           a {
@@ -71,13 +82,14 @@ export default {
           }
         }
         a {
-          padding: 10px 5px;
+          padding: 10px;
           display: block;
           text-transform: uppercase;
-          transition: color 0.1s;
-          color: #dfe5eb;
+          transition: color 0.3s;
+          color: #fff;
           &:hover {
-            color: #bf7497;
+            color: #95a5aa;
+            text-decoration: underline;
           }
         }
       }
@@ -88,61 +100,87 @@ export default {
     position: relative;
 
     height: 100%;
-    padding: 60px;
     background-color: #fff;
 
-    -moz-transition: all 300ms;
-    -webkit-transition: all 300ms;
-    transition: all 300ms;
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
 
     #menu-trigger {
       position: absolute;
       top: 10px;
       left: 10px;
-      width: 36px;
-      height: 36px;
-      background: #dfe5eb;
+      width: 30px;
+      height: 26px;
       cursor: pointer;
-      border-radius: 5px;
+      span {
+        display: block;
+        position: absolute;
+        height: 4px;
+        width: 100%;
+        background: #95a5aa;
+        border-radius: 4px;
+        opacity: 1;
+        left: 0;
 
-      -moz-transition: all 300ms;
-      -webkit-transition: all 300ms;
-      transition: all 300ms;
+        -webkit-transition: all 0.8s ease-in-out;
+        -moz-transition: all 0.8s ease-in-out;
+        -o-transition: all 0.8s ease-in-out;
+        transition: all 0.8s ease-in-out;
 
-      &:before {
-        content: '\e801';
-        display: inline-block;
-        width: 36px;
-        height: 36px;
-        color: black;
-        font-family: 'ico';
-        font-style: normal;
-        font-size: 1.2em;
-        font-weight: normal;
-        font-variant: normal;
-        text-align: center;
-        text-transform: none;
-        line-height: 36px;
-      }
-
-      &:hover {
-        background: #556270;
-        &:before {
-          color: #fcfeff;
+        &:nth-child(1) {
+          top: 0;
+        }
+        &:nth-child(2) {
+          top: 0;
+          bottom: 0;
+          margin: auto;
+        }
+        &:nth-child(3) {
+          bottom: 0;
         }
       }
     }
   }
   &.menu-active {
     #slide-menu {
+      min-width: 200px;
+      max-width: 241px;
       width: auto;
-      min-width: 230px;
-      padding: 20px;
-      opacity: 1;
+      padding: 20px 0;
     }
     #content {
-      border-top-left-radius: 10px;
-      border-bottom-left-radius: 10px;
+      border-radius: 10px;
+      height: calc(100% - 20px);
+      margin-right: 10px;
+      #menu-trigger {
+        span {
+          background: #556270;
+          &:nth-child(1) {
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            -webkit-transform: rotate(135deg);
+            -moz-transform: rotate(135deg);
+            -o-transform: rotate(135deg);
+            transform: rotate(135deg);
+          }
+          &:nth-child(2) {
+            opacity: 0;
+            left: -100px;
+          }
+          &:nth-child(3) {
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            -webkit-transform: rotate(-135deg);
+            -moz-transform: rotate(-135deg);
+            -o-transform: rotate(-135deg);
+            transform: rotate(-135deg);
+          }
+        }
+      }
     }
   }
 }

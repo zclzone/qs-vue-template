@@ -6,11 +6,9 @@ import router from '@/router'
 // 引用基础公用样式
 import '@/assets/style/main.scss'
 
-//全局引用loding组件
+//注册全局loding组件
 import loading from '@/utils/loading'
 Vue.use(loading)
-
-
 
 //mock 通过环境变量来判断是否需要加载启用
 if (process.env.NODE_ENV === 'development') {
@@ -18,9 +16,6 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 //扩充Vue的全局prototype属性
-import axios from '@/ajax'
-Vue.prototype.$axios = axios
-
 import * as commons from '@/utils/common'
 Object.keys(commons).forEach(key => {
   Vue.prototype['$' + key] = commons[key]

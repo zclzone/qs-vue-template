@@ -1,3 +1,5 @@
+import axios from '@/ajax'
+
 const to = promise => {
   return promise.then(res => [null, res]).catch(err => [err])
 }
@@ -10,5 +12,5 @@ const guid = () => {
 }
 
 export {
-  to, guid
+  to, guid, axios
 }
