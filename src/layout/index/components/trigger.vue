@@ -29,10 +29,10 @@ export default {
     opacity: 1;
     left: 0;
 
+    transition: all 0.8s ease-in-out;
     -webkit-transition: all 0.8s ease-in-out;
     -moz-transition: all 0.8s ease-in-out;
     -o-transition: all 0.8s ease-in-out;
-    transition: all 0.8s ease-in-out;
 
     &:nth-child(1) {
       top: 0;

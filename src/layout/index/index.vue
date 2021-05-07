@@ -5,18 +5,25 @@
     :class="{ 'menu-active': isMenuActive }"
   >
     <!-- 侧边栏 -->
-    <nav id="slide-menu" @click.stop>
-      <slide-menu />
+    <nav id="slide-menu" v-if="isShowMenu" @click.stop>
+      <slide-menu :menuList="menuList" />
     </nav>
 
     <!-- 主体内容 -->
     <main id="content">
       <!-- 侧边栏触发器 -->
-      <div id="menu-trigger" @click.stop="isMenuActive = !isMenuActive">
+      <div
+        id="menu-trigger"
+        v-if="isShowMenu"
+        @click.stop="isMenuActive = !isMenuActive"
+      >
         <menu-trigger :isActive="isMenuActive" />
       </div>
 
-      <router-view></router-view>
+      <keep-alive>
+        <router-view v-if="$route.meta.keepAlive" />
+      </keep-alive>
+      <router-view v-if="!$route.meta.keepAlive" />
     </main>
   </div>
 </template>
@@ -24,12 +31,19 @@
 <script>
 import SlideMenu from './components/menu'
 import MenuTrigger from './components/trigger'
+import { isShowMenu } from '../../settings'
 export default {
   name: 'layout',
   data() {
     return {
+      isShowMenu,
       isMenuActive: false,
-      menuList: [],
+      menuList: [
+        { name: 'Home', link: '/' },
+        { name: 'Blog', link: 'http://blog.qszone.com', isExternal: true },
+        { name: 'About', link: 'http://www.qszone.com', isExternal: true },
+        { name: 'Contact', link: 'http://me.qszone.com', isExternal: true },
+      ],
     }
   },
   components: {
@@ -40,12 +54,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@/assets/style/admin/index.css';
+@import '~@/assets/style/layout';
 .layout {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
   background-color: #2e4c59;
   #slide-menu {
     max-width: 0;
@@ -54,7 +64,7 @@ export default {
     padding: 20px 0;
     background: #2e4c59;
 
-    transition: all 0.5s;
+    transition: all 0.5s ease-in-out;
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
     -o-transition: all 0.5s ease-in-out;

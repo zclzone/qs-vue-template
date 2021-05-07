@@ -1,18 +1,36 @@
 <template>
   <ul class="menu">
-    <li><a href="http://www.qszone.com">Home</a></li>
-    <li><a href="http://blog.qszone.com">Blog</a></li>
-    <li><a href="http://blog.qszone.com">About</a></li>
-    <li><a href="http://me.qszone.com/">Contact</a></li>
+    <li v-for="(item, index) in menuList" :key="index">
+      <router-link v-if="!item.isExternal" :to="item.link">
+        {{ item.name }}
+      </router-link>
+      <!-- 外链 -->
+      <a v-else :href="item.link" target="_blank">{{ item.name }}</a>
+    </li>
+
     <li class="last">
-      <a href="https://github.com/zclzone">Wechat</a
-      ><a href="https://github.com/zclzone">Github</a>
+      <a href="https://github.com/zclzone">Wechat</a>
+      <a href="https://github.com/zclzone">Github</a>
     </li>
   </ul>
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    menuList: {
+      type: Array,
+      default() {
+        return [
+          { name: 'Home', link: '/' },
+          { name: 'Blog', link: 'http://blog.qszone.com', isExternal: true },
+          { name: 'About', link: 'http://www.qszone.com', isExternal: true },
+          { name: 'Contact', link: 'http://me.qszone.com', isExternal: true },
+        ]
+      },
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped>
