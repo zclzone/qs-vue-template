@@ -6,7 +6,7 @@ const mocks = [
 ]
 
 Mock.setup({
-  timeout: '300-2000'
+  timeout: '100-800'
 })
 
 mocks.map(route => {

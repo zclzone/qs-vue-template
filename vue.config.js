@@ -25,7 +25,7 @@ module.exports = {
      * proxy:代理，代理解决本地开发跨域问题
      * 开启代理：在本地会创建一个虚拟服务端，然后发送请求的数据，并同时接收请求的数据，这样客户端端和服务端进行数据的交互就不会有跨域问题
      */
-    // proxy: 'http://sally.qszone.com',
+    // proxy: 'http://www.qszone.com',
     proxy: {
       [process.env.VUE_APP_BASE_API]: {
         target: 'http://www.qszone.com',  //要访问的跨域的域名

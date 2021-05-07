@@ -13,30 +13,30 @@ const routes = [
   },
   {
     path: '/index',
-    component: () => import('@/views/index'),
+    component: () => import('@/layout/index'),
     meta: {
       title: '首页',
-      keepAlive: true
-    }
-  },
-  {
-    path: '/admin',
-    component: () => import('@/layout/admin'),
-    meta: {
-      title: 'Admin',
       keepAlive: true
     },
     children: [
       {
         path: '',
-        component: () => import('@/components/helloworld'),
+        component: () => import('@/views/index'),
         meta: {
-          title: 'Admin',
+          title: '首页',
           keepAlive: true
         },
       }
     ]
-  }
+  },
+  {
+    path: '/helloworld',
+    component: () => import('@/components/helloworld'),
+    meta: {
+      title: '欢迎页',
+      keepAlive: true
+    }
+  },
 ]
 
 const router = new VueRouter({
