@@ -1,8 +1,8 @@
 const { title } = require('./src/settings.js')
-const port = process.env.PORT || 3000
+const port = process.env.VUE_APP_PORT || 3000
 
 module.exports = {
-  publicPath: '/',
+  publicPath: './',
   outputDir: 'dist',
   assetsDir: 'static',
   productionSourceMap: false,

@@ -11,7 +11,7 @@ import loading from '@/utils/loading'
 Vue.use(loading)
 
 //mock 通过环境变量来判断是否需要加载启用
-if (process.env.NODE_ENV === 'development') {
+if (+process.env.VUE_APP_NEED_MOCK) {
   require('../mock')
 }
 
