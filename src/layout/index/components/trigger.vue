@@ -23,13 +23,16 @@ export default {
 
 <style lang="scss" scoped>
 .trigger {
+  width: 100%;
+  height: 100%;
+  position: relative;
   span {
     display: block;
     position: absolute;
-    height: 4px;
+    height: 2px;
     width: 100%;
     background: #95a5aa;
-    border-radius: 4px;
+    border-radius: 2px;
     opacity: 1;
     left: 0;
 
@@ -39,6 +42,7 @@ export default {
     -o-transition: all 0.8s ease-in-out;
 
     &:nth-child(1) {
+      background: #556270;
       top: 0;
     }
     &:nth-child(2) {
@@ -47,6 +51,7 @@ export default {
       margin: auto;
     }
     &:nth-child(3) {
+      background: #556270;
       bottom: 0;
     }
   }

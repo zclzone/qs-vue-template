@@ -4,12 +4,12 @@
     @click="isMenuActive = false"
     :class="{ [navDirection]: true, 'menu-active': isMenuActive }"
   >
-    <!-- 侧边栏 -->
-    <nav id="slide-menu" v-if="isShowMenu" @click.stop>
-      <slide-menu :menuList="menuList" />
+    <!-- 侧边栏菜单 -->
+    <nav id="side-menu" v-if="isShowMenu" @click.stop>
+      <side-menu :menuList="menuList" />
     </nav>
 
-    <!-- 主体内容 -->
+    <!-- 主体内容部分 -->
     <main id="content">
       <!-- 侧边栏触发器 -->
       <div
@@ -20,24 +20,44 @@
         <menu-trigger :isActive="isMenuActive" :direction="navDirection" />
       </div>
 
-      <keep-alive>
-        <router-view v-if="$route.meta.keepAlive" />
-      </keep-alive>
-      <router-view v-if="!$route.meta.keepAlive" />
+      <!-- 头部 -->
+      <app-header v-if="isShowHeader" :brand="title" />
+
+      <!-- 内容 -->
+      <main class="main">
+        <keep-alive>
+          <router-view v-if="$route.meta.keepAlive" />
+        </keep-alive>
+        <router-view v-if="!$route.meta.keepAlive" />
+      </main>
+
+      <!-- 尾部：版权信息/备案信息 -->
+      <app-footer v-if="isShowFooter" />
     </main>
   </div>
 </template>
 
 <script>
-import SlideMenu from './components/menu'
+import SideMenu from './components/menu'
 import MenuTrigger from './components/trigger'
-import { isShowMenu, navDirection } from '@/settings'
+import AppHeader from './components/header'
+import AppFooter from './components/footer'
+import {
+  isShowMenu,
+  navDirection,
+  isShowHeader,
+  isShowFooter,
+  title,
+} from '@/settings'
 export default {
   name: 'layout',
   data() {
     return {
       isShowMenu,
       navDirection,
+      isShowHeader,
+      isShowFooter,
+      title,
       isMenuActive: false,
       menuList: [
         { name: 'Home', link: '/' },
@@ -48,8 +68,10 @@ export default {
     }
   },
   components: {
-    SlideMenu,
+    SideMenu,
     MenuTrigger,
+    AppHeader,
+    AppFooter,
   },
 }
 </script>
@@ -58,7 +80,7 @@ export default {
 @import '~@/assets/style/layout';
 .layout {
   background-color: #2e4c59;
-  #slide-menu {
+  #side-menu {
     max-width: 0;
     min-width: 0;
     height: 100%;
@@ -73,9 +95,11 @@ export default {
   #content {
     flex: 1;
     position: relative;
-
-    height: 100%;
     background-color: #fff;
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 
     transition: all 0.5s ease-in-out;
     -webkit-transition: all 0.5s ease-in-out;
@@ -84,10 +108,14 @@ export default {
 
     #menu-trigger {
       position: absolute;
-      top: 10px;
-      width: 30px;
-      height: 26px;
+      top: 25px;
+      width: 20px;
+      height: 18px;
       cursor: pointer;
+    }
+
+    .main {
+      flex: 1;
     }
   }
   &.left {
@@ -103,7 +131,7 @@ export default {
     }
   }
   &.menu-active {
-    #slide-menu {
+    #side-menu {
       min-width: 160px;
       max-width: 240px;
       width: auto;
@@ -113,6 +141,10 @@ export default {
       height: calc(100% - 20px);
       margin-left: 10px;
       margin-right: 10px;
+      .header,
+      .footer {
+        border-radius: 10px;
+      }
     }
   }
 }
