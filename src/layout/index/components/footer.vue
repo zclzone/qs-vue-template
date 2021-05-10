@@ -28,6 +28,7 @@ export default {}
     color: #2e4c59;
     a {
       color: #333;
+      transition: color 0.3s;
       &:hover {
         color: #95a5aa;
         text-decoration: underline;

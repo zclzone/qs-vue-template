@@ -9,8 +9,8 @@
       <side-menu :menuList="menuList" />
     </nav>
 
-    <!-- 主体内容部分 -->
-    <main id="content">
+    <!-- 主体部分 -->
+    <section id="content">
       <!-- 侧边栏触发器 -->
       <div
         id="menu-trigger"
@@ -33,7 +33,7 @@
 
       <!-- 尾部：版权信息/备案信息 -->
       <app-footer v-if="isShowFooter" />
-    </main>
+    </section>
   </div>
 </template>
 
@@ -137,14 +137,9 @@ export default {
       width: auto;
     }
     #content {
-      border-radius: 10px;
       height: calc(100% - 20px);
       margin-left: 10px;
       margin-right: 10px;
-      .header,
-      .footer {
-        border-radius: 10px;
-      }
     }
   }
 }

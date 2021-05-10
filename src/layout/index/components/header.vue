@@ -29,6 +29,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   .brand {
+    font-size: 32px;
     color: #2e4c59;
     text-transform: uppercase;
   }
