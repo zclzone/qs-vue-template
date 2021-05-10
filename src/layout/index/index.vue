@@ -12,24 +12,18 @@
     <!-- 主体部分 -->
     <section id="content">
       <!-- 侧边栏触发器 -->
-      <div
-        id="menu-trigger"
+      <menu-trigger
+        :isActive="isMenuActive"
+        :direction="navDirection"
         v-if="isShowMenu"
-        @click.stop="isMenuActive = !isMenuActive"
-      >
-        <menu-trigger :isActive="isMenuActive" :direction="navDirection" />
-      </div>
+        @click.stop.native="isMenuActive = !isMenuActive"
+      />
 
       <!-- 头部 -->
       <app-header v-if="isShowHeader" :brand="title" />
 
       <!-- 内容 -->
-      <main class="main">
-        <keep-alive>
-          <router-view v-if="$route.meta.keepAlive" />
-        </keep-alive>
-        <router-view v-if="!$route.meta.keepAlive" />
-      </main>
+      <app-main />
 
       <!-- 尾部：版权信息/备案信息 -->
       <app-footer v-if="isShowFooter" />
@@ -41,6 +35,7 @@
 import SideMenu from './components/menu'
 import MenuTrigger from './components/trigger'
 import AppHeader from './components/header'
+import AppMain from './components/main'
 import AppFooter from './components/footer'
 import {
   isShowMenu,
@@ -71,6 +66,7 @@ export default {
     SideMenu,
     MenuTrigger,
     AppHeader,
+    AppMain,
     AppFooter,
   },
 }
@@ -81,16 +77,10 @@ export default {
 .layout {
   background-color: #2e4c59;
   #side-menu {
-    max-width: 0;
-    min-width: 0;
+    width: 0;
     height: 100%;
     padding: 20px 0;
     background: #2e4c59;
-
-    transition: all 0.5s ease-in-out;
-    -webkit-transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
   }
   #content {
     flex: 1;
@@ -100,46 +90,32 @@ export default {
     display: flex;
     flex-direction: column;
     height: 100%;
-
-    transition: all 0.5s ease-in-out;
-    -webkit-transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
-
-    #menu-trigger {
-      position: absolute;
-      top: 25px;
-      width: 20px;
-      height: 18px;
-      cursor: pointer;
-    }
-
-    .main {
-      flex: 1;
-    }
   }
   &.left {
     flex-direction: row;
-    #menu-trigger {
-      left: 10px;
+    #content .header {
+      padding-left: 115px;
     }
   }
   &.right {
     flex-direction: row-reverse;
-    #menu-trigger {
-      right: 10px;
+    #content .header {
+      padding-left: 30px;
     }
   }
   &.menu-active {
     #side-menu {
-      min-width: 160px;
-      max-width: 240px;
-      width: auto;
+      width: 200px;
     }
     #content {
-      height: calc(100% - 20px);
-      margin-left: 10px;
-      margin-right: 10px;
+      border-top-left-radius: 30px;
+      border-bottom-left-radius: 30px;
+      .header {
+        border-top-left-radius: 30px;
+      }
+      .footer {
+        border-bottom-left-radius: 30px;
+      }
     }
   }
 }

@@ -16,8 +16,6 @@ export default {}
   height: 88px;
   padding: 10px 0;
   background-color: #e5e5e5;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
 
   display: flex;
   flex-direction: column;

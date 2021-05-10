@@ -35,18 +35,22 @@ export default {
 
 <style lang="scss" scoped>
 .menu {
+  width: 100%;
   height: 100%;
+  overflow: auto;
+
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  &::-webkit-scrollbar {
-    display: none;
-  }
+
+  // scrollbar-width: 0;
+  // -ms-overflow-style: none;
+  // &::-webkit-scrollbar {
+  //   display: none;
+  // }
   li {
     display: flex;
-    justify-content: center;
+    margin: 10px auto;
+    padding: 0 15px;
     &.last {
       margin-top: auto;
       a {
@@ -58,8 +62,6 @@ export default {
       }
     }
     a {
-      padding: 10px;
-      display: block;
       text-transform: uppercase;
       transition: color 0.3s;
       color: #fff;

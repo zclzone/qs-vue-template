@@ -21,7 +21,6 @@ export default {
 .header {
   height: 67px;
   padding: 10px;
-  padding-left: 45px;
   background-color: #fff;
   border-bottom: 1px solid rgba($color: #95a5aa, $alpha: 0.3);
 
@@ -29,7 +28,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   .brand {
-    font-size: 32px;
+    font-size: 28px;
     color: #2e4c59;
     text-transform: uppercase;
   }
