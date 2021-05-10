@@ -20,7 +20,7 @@ export default {
 <style lang="scss" scoped>
 .header {
   height: 67px;
-  padding: 10px;
+  padding: 10px 30px;
   background-color: #fff;
   border-bottom: 1px solid rgba($color: #95a5aa, $alpha: 0.3);
 
@@ -29,8 +29,10 @@ export default {
   align-items: center;
   .brand {
     font-size: 28px;
-    color: #2e4c59;
     text-transform: uppercase;
+    a {
+      color: #2e4c59;
+    }
   }
 }
 </style>

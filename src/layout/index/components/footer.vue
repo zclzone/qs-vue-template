@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <p><a href="http://me.qszone.com">www.qszone.com</a></p>
-    <p>Designed & Powerd by <a href="http://me.qszone.com">Ronnie Zhang</a></p>
+    <p>Designed & Powerd by <a href="http://www.qszone.com">Ronnie Zhang</a></p>
     <p>Copyright© 2021 张传龙</p>
   </footer>
 </template>

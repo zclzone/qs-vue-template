@@ -100,14 +100,14 @@ export default {
   &.right {
     flex-direction: row-reverse;
     #content .header {
-      padding-left: 30px;
+      padding-right: 115px;
     }
   }
   &.menu-active {
     #side-menu {
       width: 200px;
     }
-    #content {
+    &.left #content {
       border-top-left-radius: 30px;
       border-bottom-left-radius: 30px;
       .header {
@@ -115,6 +115,16 @@ export default {
       }
       .footer {
         border-bottom-left-radius: 30px;
+      }
+    }
+    &.right #content {
+      border-top-right-radius: 30px;
+      border-bottom-right-radius: 30px;
+      .header {
+        border-top-right-radius: 30px;
+      }
+      .footer {
+        border-bottom-right-radius: 30px;
       }
     }
   }
