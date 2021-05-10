@@ -1,5 +1,5 @@
 <template>
-  <div class="trigger" :class="{ active: isActive }">
+  <div class="trigger" :class="{ [direction]: true, active: isActive }">
     <span></span>
     <span></span>
     <span></span>
@@ -12,6 +12,10 @@ export default {
     isActive: {
       type: Boolean,
       default: false,
+    },
+    direction: {
+      type: String,
+      default: 'left',
     },
   },
 }
@@ -60,7 +64,6 @@ export default {
       }
       &:nth-child(2) {
         opacity: 0;
-        left: -100px;
       }
       &:nth-child(3) {
         top: 0;
@@ -70,6 +73,16 @@ export default {
         -moz-transform: rotate(-135deg);
         -o-transform: rotate(-135deg);
         transform: rotate(-135deg);
+      }
+    }
+    &.left {
+      span:nth-child(2) {
+        left: -100px;
+      }
+    }
+    &.right {
+      span:nth-child(2) {
+        left: 100px;
       }
     }
   }

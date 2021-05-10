@@ -2,7 +2,7 @@
   <div
     class="layout"
     @click="isMenuActive = false"
-    :class="{ 'menu-active': isMenuActive }"
+    :class="{ [navDirection]: true, 'menu-active': isMenuActive }"
   >
     <!-- 侧边栏 -->
     <nav id="slide-menu" v-if="isShowMenu" @click.stop>
@@ -17,7 +17,7 @@
         v-if="isShowMenu"
         @click.stop="isMenuActive = !isMenuActive"
       >
-        <menu-trigger :isActive="isMenuActive" />
+        <menu-trigger :isActive="isMenuActive" :direction="navDirection" />
       </div>
 
       <keep-alive>
@@ -31,12 +31,13 @@
 <script>
 import SlideMenu from './components/menu'
 import MenuTrigger from './components/trigger'
-import { isShowMenu } from '../../settings'
+import { isShowMenu, navDirection } from '@/settings'
 export default {
   name: 'layout',
   data() {
     return {
       isShowMenu,
+      navDirection,
       isMenuActive: false,
       menuList: [
         { name: 'Home', link: '/' },
@@ -84,16 +85,27 @@ export default {
     #menu-trigger {
       position: absolute;
       top: 10px;
-      left: 10px;
       width: 30px;
       height: 26px;
       cursor: pointer;
     }
   }
+  &.left {
+    flex-direction: row;
+    #menu-trigger {
+      left: 10px;
+    }
+  }
+  &.right {
+    flex-direction: row-reverse;
+    #menu-trigger {
+      right: 10px;
+    }
+  }
   &.menu-active {
     #slide-menu {
-      min-width: 200px;
-      max-width: 241px;
+      min-width: 160px;
+      max-width: 240px;
       width: auto;
     }
     #content {
