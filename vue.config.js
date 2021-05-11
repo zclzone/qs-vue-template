@@ -13,6 +13,22 @@ module.exports = {
       return args
     })
   },
+  css: {
+    loaderOptions: {
+      sass: {
+        prependData: `
+          /* 阿里字体图标 */
+          //@import '//at.alicdn.com/t/font_1186631_dnfzsu5n7yp.css';
+          /* 字体 */
+          @import '//fonts.googleapis.com/css?family=Encode+Sans+Condensed:400,600';
+          /* 重置样式 */
+          @import '@/assets/style/reset.scss';
+          /* 通用样式 */
+          @import '@/assets/style/common.scss';
+        `
+      }
+    }
+  },
   devServer: {
     port, // 端口号
     open: true, // 自动打开浏览器
