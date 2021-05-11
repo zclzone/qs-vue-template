@@ -5,7 +5,6 @@
       <span></span>
       <span></span>
     </div>
-    <span class="trigger-text">Menu</span>
   </div>
 </template>
 

@@ -94,13 +94,13 @@ export default {
   &.left {
     flex-direction: row;
     #content .header {
-      padding-left: 115px;
+      padding-left: 70px;
     }
   }
   &.right {
     flex-direction: row-reverse;
     #content .header {
-      padding-right: 115px;
+      padding-right: 70px;
     }
   }
   &.menu-active {
