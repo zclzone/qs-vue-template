@@ -3,20 +3,17 @@ import App from './App.vue'
 import router from '@/router'
 // import store from './store'
 
-//注册全局loding组件
-import loading from '@/utils/loading'
-Vue.use(loading)
+import axios from '@/ajax'
+Vue.prototype.$axios = axios
 
 //mock 通过环境变量来判断是否需要加载启用
 if (+process.env.VUE_APP_NEED_MOCK) {
   require('../mock')
 }
 
-//扩充Vue的全局prototype属性
-import * as commons from '@/utils/common'
-Object.keys(commons).forEach(key => {
-  Vue.prototype['$' + key] = commons[key]
-})
+//注册全局loding组件
+import loading from '@/utils/loading'
+Vue.use(loading)
 
 //全局过滤器
 import * as filters from './filters'
