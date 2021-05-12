@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { test } from '@/api/test'
+import { test } from '@/api'
 import { parseTime } from '../utils'
 export default {
   data() {

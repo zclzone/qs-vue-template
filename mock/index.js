@@ -1,8 +1,8 @@
 import Mock from 'mockjs'
-import testApi from './api/test'
+import indexApi from './api'
 
 const mocks = [
-  ...testApi
+  ...indexApi
 ]
 
 Mock.setup({
