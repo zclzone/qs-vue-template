@@ -7,6 +7,9 @@ module.exports = {
   assetsDir: 'static',
   productionSourceMap: false,
   chainWebpack: config => {
+    // 移除 prefetch 插件，它可能会导致很多无意义的请求
+    config.plugins.delete('prefetch')
+
     config.plugin('html').tap(args => {
       // 修改初始title
       args[0].title = title
@@ -53,7 +56,6 @@ module.exports = {
         }
       }
     },
-    // after: require('./mock')
   },
   // pages: {
   //   index: {
