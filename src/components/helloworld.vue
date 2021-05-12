@@ -1,16 +1,18 @@
 <template>
   <div class="content" v-if="msg">
     <h1 v-text="msg"></h1>
-    <p>{{ curDate | dateFormat }}</p>
+    <p>{{ curDate }}</p>
   </div>
 </template>
 
 <script>
+import { test } from '@/api/test'
+import { parseTime } from '../utils'
 export default {
   data() {
     return {
       msg: '',
-      curDate: new Date(),
+      curDate: parseTime(new Date(), '{y}-{M}-{d} {h}:{m}:{s}'),
     }
   },
   mounted() {
@@ -19,11 +21,11 @@ export default {
   methods: {
     async initData() {
       setInterval(() => {
-        this.curDate = new Date()
+        this.curDate = parseTime(new Date(), '{y}-{M}-{d} {h}:{m}:{s}')
       }, 1000)
       try {
         $loading.show()
-        const res = await this.$axios.get('/test')
+        const res = await test()
         $loading.hide()
         this.msg = res.data.msg
       } catch (error) {

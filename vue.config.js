@@ -6,15 +6,18 @@ module.exports = {
   outputDir: 'dist',
   assetsDir: 'static',
   productionSourceMap: false,
+  configureWebpack: {
+    name: title
+  },
   chainWebpack: config => {
     // 移除 prefetch 插件，它可能会导致很多无意义的请求
     config.plugins.delete('prefetch')
 
-    config.plugin('html').tap(args => {
-      // 修改初始title
-      args[0].title = title
-      return args
-    })
+    // config.plugin('html').tap(args => {
+    //   // 添加初始化变量 使用'<%= htmlWebpackPlugin.options.xxx %>'访问
+    //   args[0].title = title
+    //   return args
+    // })
   },
   css: {
     loaderOptions: {
