@@ -1,7 +1,7 @@
-export { parseTime, formatTime } from '@/utils'
+import { parseTime } from '@/utils'
 
 /**
- * Show plural label if time is plural number
+ * 判断显示复数
  * @param {number} time
  * @param {string} label
  * @return {string}
@@ -59,9 +59,14 @@ export function toThousandFilter(num) {
 }
 
 /**
- * Upper case first char
+ * 首字母大写
  * @param {String} string
  */
 export function uppercaseFirst(string) {
   return string.charAt(0).toUpperCase() + string.slice(1)
+}
+
+
+export function timeFormatter(time, cFormat) {
+  return parseTime(time, cFormat)
 }

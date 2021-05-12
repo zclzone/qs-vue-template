@@ -3,7 +3,7 @@ import axios from 'axios'
 const service = axios.create({
   timeout: 30000,
   baseURL: process.env.VUE_APP_BASE_API,
-  withCredentials: false,
+  // withCredentials: true, // 跨域时携带cookies
 })
 
 service.interceptors.request.use(
@@ -19,7 +19,7 @@ service.interceptors.request.use(
 )
 
 service.interceptors.response.use(
-  response => Promise.resolve(response),
+  response => response.data,
   err => Promise.reject(err)
 )
 

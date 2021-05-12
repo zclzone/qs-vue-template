@@ -1,9 +1,9 @@
 import request from '@/utils/request'
 
-export const test = (query) => {
+export const test = (params) => {
   return request({
     url: '/test',
     method: 'get',
-    params: query
+    params
   })
 }

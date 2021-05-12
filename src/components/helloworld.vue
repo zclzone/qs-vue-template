@@ -1,7 +1,7 @@
 <template>
   <div class="content" v-if="msg">
     <h1 v-text="msg"></h1>
-    <p>{{ curDate }}</p>
+    <p>{{ curDate | timeFormatter }}</p>
   </div>
 </template>
 
@@ -12,7 +12,7 @@ export default {
   data() {
     return {
       msg: '',
-      curDate: parseTime(new Date(), '{y}-{M}-{d} {h}:{m}:{s}'),
+      curDate: new Date(),
     }
   },
   mounted() {
@@ -21,13 +21,13 @@ export default {
   methods: {
     async initData() {
       setInterval(() => {
-        this.curDate = parseTime(new Date(), '{y}-{M}-{d} {h}:{m}:{s}')
+        this.curDate = new Date()
       }, 1000)
       try {
         $loading.show()
         const res = await test()
         $loading.hide()
-        this.msg = res.data.msg
+        this.msg = res.msg
       } catch (error) {
         $loading.hide()
         console.error(error)
