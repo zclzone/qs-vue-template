@@ -1,6 +1,6 @@
 <template>
-  <div id="trigger" :class="{ [direction]: true, active: isActive }">
-    <div class="trigger-icon">
+  <div class="hamburger">
+    <div class="hamburger-content">
       <span></span>
       <span></span>
       <span></span>
@@ -8,26 +8,8 @@
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    isActive: {
-      type: Boolean,
-      default: false,
-    },
-    direction: {
-      type: String,
-      default: 'left',
-    },
-  },
-}
-</script>
-
 <style lang="scss" scoped>
-#trigger {
-  position: absolute;
-  top: 15px;
-
+.hamburger {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -41,20 +23,10 @@ export default {
 
   transition: all 0.3s;
   cursor: pointer;
-  &.left {
-    left: 15px;
-  }
-  &.right {
-    right: 15px;
-  }
-  .trigger-text {
-    margin-left: 10px;
-    text-transform: uppercase;
-  }
   &:hover {
     background-color: #e5e5e5;
   }
-  .trigger-icon {
+  .hamburger-content {
     width: 16px;
     height: 14px;
     position: relative;
@@ -87,7 +59,7 @@ export default {
     }
   }
   &.active {
-    .trigger-icon span {
+    .hamburger-content span {
       &:nth-child(1) {
         top: 0;
         bottom: 0;
@@ -111,12 +83,12 @@ export default {
       }
     }
     &.left {
-      .trigger-icon span:nth-child(2) {
+      .hamburger-content span:nth-child(2) {
         left: -100px;
       }
     }
     &.right {
-      .trigger-icon span:nth-child(2) {
+      .hamburger-content span:nth-child(2) {
         left: 100px;
       }
     }

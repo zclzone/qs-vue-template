@@ -11,12 +11,11 @@
 
     <!-- 主体部分 -->
     <section id="content">
-      <!-- 侧边栏触发器 -->
-      <menu-trigger
-        :isActive="isMenuActive"
-        :direction="navDirection"
+      <!-- 汉堡包触发器 -->
+      <hamburger
         v-if="isShowMenu"
         @click.stop.native="isMenuActive = !isMenuActive"
+        :class="{ [navDirection]: true, active: isMenuActive }"
       />
 
       <!-- 头部 -->
@@ -33,7 +32,7 @@
 
 <script>
 import SideMenu from './components/menu'
-import MenuTrigger from './components/trigger'
+import Hamburger from '@/components/hamburger'
 import AppHeader from './components/header'
 import AppMain from './components/main'
 import AppFooter from './components/footer'
@@ -64,7 +63,7 @@ export default {
   },
   components: {
     SideMenu,
-    MenuTrigger,
+    Hamburger,
     AppHeader,
     AppMain,
     AppFooter,
@@ -90,6 +89,16 @@ export default {
     display: flex;
     flex-direction: column;
     height: 100%;
+    .hamburger {
+      position: absolute;
+      top: 15px;
+      &.left {
+        left: 15px;
+      }
+      &.right {
+        right: 15px;
+      }
+    }
   }
   &.left {
     flex-direction: row;
